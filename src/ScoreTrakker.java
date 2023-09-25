@@ -30,8 +30,7 @@ public class ScoreTrakker {
 			in.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Can't open file: "+filename);
 		}
 	}
 
