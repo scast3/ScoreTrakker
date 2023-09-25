@@ -4,6 +4,13 @@ public class Student implements Comparable<Student>{
 	private String name;
 	
 	
+	public Student(int score, String name) {
+		super();
+		this.score = score;
+		this.name = name;
+	}
+
+
 	@Override
 	public int compareTo(Student o) {
 		// TODO Auto-generated method stub
