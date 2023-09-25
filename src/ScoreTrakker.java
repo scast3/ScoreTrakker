@@ -8,6 +8,7 @@ public class ScoreTrakker {
 	
 	public ScoreTrakker() {
 		super();
+		students = new ArrayList<Student>();
 	}
 	
 	public void loadDataFile(String filename) {
