@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class ScoreTrakker {
 	private ArrayList<Student> students;
 	
+	public ScoreTrakker() {
+		super();
+	}
 	
 	public void loadDataFile(String filename) {
 		try {
@@ -19,7 +22,7 @@ public class ScoreTrakker {
 				tempName = in.nextLine();
 				tempScore = in.nextLine();
 				
-				Student currentStudent = new Student(4, tempName);
+				Student currentStudent = new Student(Integer.parseInt(tempScore), tempName);
 				students.add(currentStudent);
 			}
 			
@@ -30,7 +33,8 @@ public class ScoreTrakker {
 			e.printStackTrace();
 		}
 	}
-	
+
+
 	public void printInOrder() {
 		for(Student s : students) {
 			System.out.println(s);
@@ -42,6 +46,7 @@ public class ScoreTrakker {
 		printInOrder();
 	}
 	public static void main(String[] args) {
-		ScoreTrakker test;
+		ScoreTrakker test = new ScoreTrakker();
+		test.processFiles();
 	}
 }
