@@ -14,17 +14,20 @@ public class ScoreTrakker {
 		students = new ArrayList<Student>();
 	}
 	
-	public void loadDataFile(String filename) {
+	public void loadDataFile(String filename) throws FileNotFoundException {
 		try {
+			// Open a file to read
 			FileReader reader = new FileReader(filename);
+			// Initialize scanner to read file
 			Scanner in = new Scanner(reader);
-			
+			// Loop until the end of file
 			while (in.hasNextLine()) {
 				String tempName;
 				String tempScore;
 				
 				tempName = in.nextLine();
 				tempScore = in.nextLine();
+				// Try to add the next student to list of students and throw an exception if invalid.
 				try {
 					Student currentStudent = new Student(Integer.parseInt(tempScore), tempName);
 					students.add(currentStudent);
@@ -36,19 +39,22 @@ public class ScoreTrakker {
 			}
 			
 			in.close();
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("\nCan't open file: "+filename);
 		}
+			catch(FileNotFoundException e) {
+				throw e;
+			}
+		
+			
+		
 	}
 
 
 	public void printInOrder() {
 		
-		//sort by student name
-
+		//sort by student score by calling the compareTo method in the Student class
 		Collections.sort(students);
 		
+		// Prints the sorted list of students
 		for(Student s : students) {
 			System.out.println(s);
 		}
@@ -57,10 +63,14 @@ public class ScoreTrakker {
 	public void processFiles() {
 		System.out.println("Student Score List");
 		for(String fileName:files) {
-			loadDataFile(fileName);
-			printInOrder();
-			students.clear();
-		}
+			try {
+				loadDataFile(fileName);
+				printInOrder();
+				students.clear();
+			} catch (FileNotFoundException e) {
+				System.out.println("\nCan't open file: "+fileName);
+			}}
+		
 		
 	}
 	public static void main(String[] args) {
