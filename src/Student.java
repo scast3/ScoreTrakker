@@ -23,5 +23,12 @@ public class Student implements Comparable<Student>{
 		return name + " " + score;
 	}
 	
+	public int getScore() {
+		return this.score;
+	}
+	public String getName() {
+		return this.name;
+	}
+	
 	
 }

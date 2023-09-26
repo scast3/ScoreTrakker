@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class ScoreTrakker {
@@ -44,6 +46,12 @@ public class ScoreTrakker {
 	public void printInOrder() {
 		
 		//sort by student name
+		Collections.sort(students, new Comparator<Student>(){
+			public int compare(Student studentA, Student studentB) {
+				System.out.println(studentA.getScore() - studentB.getScore());
+				return studentA.getScore() - studentB.getScore();
+			}
+		});
 		
 		for(Student s : students) {
 			System.out.println(s);
