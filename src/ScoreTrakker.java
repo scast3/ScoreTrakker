@@ -38,7 +38,7 @@ public class ScoreTrakker {
 			in.close();
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("Can't open file: "+filename);
+			System.out.println("\nCan't open file: "+filename);
 		}
 	}
 
@@ -46,12 +46,8 @@ public class ScoreTrakker {
 	public void printInOrder() {
 		
 		//sort by student name
-		Collections.sort(students, new Comparator<Student>(){
-			public int compare(Student studentA, Student studentB) {
-				System.out.println(studentA.getScore() - studentB.getScore());
-				return studentA.getScore() - studentB.getScore();
-			}
-		});
+
+		Collections.sort(students);
 		
 		for(Student s : students) {
 			System.out.println(s);
@@ -60,8 +56,12 @@ public class ScoreTrakker {
 	
 	public void processFiles() {
 		System.out.println("Student Score List");
-		loadDataFile("scores.txt");
-		printInOrder();
+		for(String fileName:files) {
+			loadDataFile(fileName);
+			printInOrder();
+			students.clear();
+		}
+		
 	}
 	public static void main(String[] args) {
 		ScoreTrakker test = new ScoreTrakker();

@@ -12,9 +12,9 @@ public class Student implements Comparable<Student>{
 
 
 	@Override
-	public int compareTo(Student o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Student otherStudent) {
+		
+		return Integer.compare(this.score, otherStudent.getScore());
 	}
 
 
