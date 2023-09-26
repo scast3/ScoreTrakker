@@ -22,9 +22,12 @@ public class ScoreTrakker {
 				
 				tempName = in.nextLine();
 				tempScore = in.nextLine();
-				
-				Student currentStudent = new Student(Integer.parseInt(tempScore), tempName);
-				students.add(currentStudent);
+				try {
+					Student currentStudent = new Student(Integer.parseInt(tempScore), tempName);
+					students.add(currentStudent);
+				} catch (NumberFormatException e) {
+					System.out.println("Incorrect format for " + tempName + " not a valid score: " + tempScore);
+				}
 			}
 			
 			in.close();
@@ -36,6 +39,8 @@ public class ScoreTrakker {
 
 
 	public void printInOrder() {
+		System.out.println("Student Score List");
+		//sort by student name
 		for(Student s : students) {
 			System.out.println(s);
 		}
