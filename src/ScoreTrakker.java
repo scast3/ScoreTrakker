@@ -1,8 +1,18 @@
+/*
+ * Class: ScoreTrakker
+ * Loads in data files to read off the name and score. Prints the lists
+ * in order of score and handles exceptions of an incorrect input and
+ * inaccessible data files.
+ * Authors: Andrew Balmaseda and Santiago Castillo
+ * Date: 9/22/2023
+ * Collaborators: N/A
+ * Sources: JavaTPoint for Comparable interface
+ */
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class ScoreTrakker {
@@ -40,15 +50,11 @@ public class ScoreTrakker {
 			
 			in.close();
 		}
+		// Throws an exception to be caught by processFiles
 			catch(FileNotFoundException e) {
 				throw e;
 			}
-		
-			
-		
 	}
-
-
 	public void printInOrder() {
 		
 		//sort by student score by calling the compareTo method in the Student class
@@ -62,11 +68,13 @@ public class ScoreTrakker {
 	
 	public void processFiles() {
 		System.out.println("Student Score List");
+		// Iterates through the list of files
 		for(String fileName:files) {
+			// Catches FileNotFoundException thrown in the loadDataFile() method
 			try {
 				loadDataFile(fileName);
 				printInOrder();
-				students.clear();
+				students.clear(); // Clears the arrayList after every iteration
 			} catch (FileNotFoundException e) {
 				System.out.println("\nCan't open file: "+fileName);
 			}}
