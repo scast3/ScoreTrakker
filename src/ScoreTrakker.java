@@ -67,12 +67,13 @@ public class ScoreTrakker {
 	}
 	
 	public void processFiles() {
-		System.out.println("Student Score List");
+		
 		// Iterates through the list of files
 		for(String fileName:files) {
 			// Catches FileNotFoundException thrown in the loadDataFile() method
 			try {
 				loadDataFile(fileName);
+				System.out.println("Student Score List");
 				printInOrder();
 				students.clear(); // Clears the arrayList after every iteration
 			} catch (FileNotFoundException e) {
