@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class ScoreTrakker {
 	private ArrayList<Student> students;
+	private String[] files = {"scores.txt", "badscore.txt", "nofile.txt" };
 	
 	public ScoreTrakker() {
 		super();
@@ -26,7 +27,9 @@ public class ScoreTrakker {
 					Student currentStudent = new Student(Integer.parseInt(tempScore), tempName);
 					students.add(currentStudent);
 				} catch (NumberFormatException e) {
+					System.out.println();
 					System.out.println("Incorrect format for " + tempName + " not a valid score: " + tempScore);
+					System.out.println();
 				}
 			}
 			
@@ -39,14 +42,16 @@ public class ScoreTrakker {
 
 
 	public void printInOrder() {
-		System.out.println("Student Score List");
+		
 		//sort by student name
+		
 		for(Student s : students) {
 			System.out.println(s);
 		}
 	}
 	
 	public void processFiles() {
+		System.out.println("Student Score List");
 		loadDataFile("scores.txt");
 		printInOrder();
 	}
